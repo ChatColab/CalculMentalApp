@@ -3,17 +3,26 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph"
-        app:startDestination="@id/FirstFragment">
+        app:startDestination="@id/HomeFragment">
 
     <fragment
-            android:id="@+id/FirstFragment"
-            android:name="com.example.calculmentalapp.FirstFragment"
-            android:label="@string/first_fragment_label"
-            tools:layout="@layout/fragment_first">
+            android:id="@+id/HomeFragment"
+            android:name="com.example.calculmentalapp.HomeFragment"
+            android:label="@string/home_fragment_label"
+            tools:layout="@layout/fragment_home">
 
         <action
-                android:id="@+id/action_FirstFragment_to_SecondFragment"
+                android:id="@+id/action_HomeFragment_to_SecondFragment"
                 app:destination="@id/SecondFragment" />
+        <action
+                android:id="@+id/action_HomeFragment_to_GameFragment"
+                app:destination="@id/GameFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/GameFragment"
+            android:name="com.example.calculmentalapp.GameFragment"
+            android:label="@string/game_fragment_label"
+            tools:layout="@layout/fragment_game">
     </fragment>
     <fragment
             android:id="@+id/SecondFragment"
@@ -22,7 +31,7 @@
             tools:layout="@layout/fragment_second">
 
         <action
-                android:id="@+id/action_SecondFragment_to_FirstFragment"
-                app:destination="@id/FirstFragment" />
+                android:id="@+id/action_SecondFragment_to_HomeFragment"
+                app:destination="@id/HomeFragment" />
     </fragment>
 </navigation>

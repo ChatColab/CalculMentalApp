@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
         boolean focusable = true;
         PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
+        // MUSIC
+
+        // NIGHT MODE
         SwitchCompat switchNightMode = popupView.findViewById(R.id.switch_night_mode);
         switchNightMode.setChecked(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES);
         switchNightMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -95,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         });
+
+        // CHANGE LANGUAGE
+        Spinner switchLanguage = popupView.findViewById(R.id.spinner_language);
 
         // Affichez le PopupWindow sous la barre d'outils
         popupWindow.showAtLocation(findViewById(R.id.toolbar), Gravity.TOP | Gravity.START, 0, (getSupportActionBar().getHeight()) + 100);
