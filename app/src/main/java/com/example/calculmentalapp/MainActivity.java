@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Affichez le PopupWindow sous la barre d'outils
-        popupWindow.showAtLocation(findViewById(R.id.toolbar), Gravity.TOP | Gravity.START, 0, getSupportActionBar().getHeight());
+        popupWindow.showAtLocation(findViewById(R.id.toolbar), Gravity.TOP | Gravity.START, 0, (getSupportActionBar().getHeight()) + 100);
     }
 
     @Override
