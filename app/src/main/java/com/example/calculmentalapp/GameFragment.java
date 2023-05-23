@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.calculmentalapp.databinding.FragmentGameBinding;
 
+import java.util.Random;
+
 public class GameFragment extends Fragment {
 
     private FragmentGameBinding binding;
@@ -19,6 +21,7 @@ public class GameFragment extends Fragment {
     private TypeOperationEnum typeOperation;
     private Integer firstNumber;
     private Integer secondNumber;
+    private int score = 0;
 
     @Override
     public View onCreateView(
@@ -65,14 +68,29 @@ public class GameFragment extends Fragment {
     }
 
     private void handleCorrectAnswer() {
-        //faire gagner des points
+        score++;
         loadNewQuestion();
     }
 
     private void generateNewCalcul() {
-        firstNumber = (int) (Math.random() * 10);
-        secondNumber = (int) (Math.random() * 10);
-        typeOperation = TypeOperationEnum.values()[(int) (Math.random() * 4)];
+        Random random = new Random();
+        int plage = 100;
+
+        firstNumber = random.nextInt(plage);
+
+        typeOperation = TypeOperationEnum.values()[random.nextInt(4)];
+
+        if (typeOperation == TypeOperationEnum.DIVIDE) {
+            //cas de division par 0
+            do {
+                secondNumber = random.nextInt(plage);
+            } while (secondNumber == 0);
+
+            //pour s'assurer que le résultat est entier
+            firstNumber = firstNumber - (firstNumber % secondNumber);
+        } else {
+            secondNumber = random.nextInt(plage);
+        }
     }
 
     private void loadNewQuestion() {
