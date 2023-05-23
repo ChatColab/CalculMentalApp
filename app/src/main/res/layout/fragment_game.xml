@@ -16,14 +16,6 @@
             android:text="3 x 3" />
 
     <TextView
-            android:id="@+id/tv_time_remaining"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textSize="18sp"
-            android:text="Temps restant: 15s" />
-
-    <TextView
             android:id="@+id/tv_lives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
