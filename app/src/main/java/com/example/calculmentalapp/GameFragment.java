@@ -22,6 +22,7 @@ public class GameFragment extends Fragment {
     private Integer firstNumber;
     private Integer secondNumber;
     private int score = 0;
+    private int lives = 3;
 
     @Override
     public View onCreateView(
@@ -61,10 +62,18 @@ public class GameFragment extends Fragment {
         return getAnswer().equals(doOperation());
     }
 
+    private void modifyLifeTextView(int lives) {
+        binding.tvLives.setText(String.valueOf(lives));
+    }
+
     private void handleWrongAnswer() {
-        //faire perdre une vie
-        //check if game is over
-        //sinon load new question
+        lives--;
+        modifyLifeTextView(lives);
+        if (lives == 0) {
+            //game over
+        } else {
+            loadNewQuestion();
+        }
     }
 
     private void handleCorrectAnswer() {
