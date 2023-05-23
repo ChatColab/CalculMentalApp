@@ -69,10 +69,18 @@ public class GameFragment extends Fragment {
         loadNewQuestion();
     }
 
+    private void generateNewCalcul() {
+        firstNumber = (int) (Math.random() * 10);
+        secondNumber = (int) (Math.random() * 10);
+        typeOperation = TypeOperationEnum.values()[(int) (Math.random() * 4)];
+    }
+
     private void loadNewQuestion() {
         binding.etAnswer.setText("");
+
+        generateNewCalcul();
+        binding.tvOperation.setText(firstNumber + " " + typeOperation.getSymbol() + " " + secondNumber);
         //clear text view and input field
-        //generate new ones
     }
 
     private void handleAnswer() {
@@ -93,23 +101,6 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 handleAnswer();
-            }
-        });
-
-        //vérification que l'utilisateur n'entre que des chiffres
-        binding.etAnswer.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() > 0 && !s.toString().matches("[0-9]+")) {
-                    binding.etAnswer.setText(s.toString().replaceAll("[^0-9]", ""));
-                    binding.etAnswer.setSelection(binding.etAnswer.getText().length());
-                }
-            }
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
         });
 

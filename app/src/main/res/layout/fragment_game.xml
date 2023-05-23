@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:hint="Réponse" />
 
     <GridLayout
@@ -48,5 +48,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Confirmer" />
+
+    <TextView
+            android:id="@+id/gadamn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:text="penser à faire un à propos avec le git du projet, les features en plus, mon nom" />
 
 </LinearLayout>
