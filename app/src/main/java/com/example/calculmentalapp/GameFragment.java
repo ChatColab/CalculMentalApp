@@ -62,13 +62,13 @@ public class GameFragment extends Fragment {
         return getAnswer().equals(doOperation());
     }
 
-    private void modifyLifeTextView(int lives) {
+    private void modifyLifeTextView() {
         binding.tvLives.setText(String.valueOf(lives));
     }
 
     private void handleWrongAnswer() {
         lives--;
-        modifyLifeTextView(lives);
+        modifyLifeTextView();
         if (lives == 0) {
             //game over
         } else {
