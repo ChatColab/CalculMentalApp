@@ -44,6 +44,13 @@ public class HomeFragment extends Fragment {
                         .navigate(R.id.action_HomeFragment_to_GameFragment);
             }
         });
+
+        binding.buttonExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
     }
 
     @Override
