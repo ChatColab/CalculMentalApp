@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -22,8 +21,6 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public class GameFragment extends Fragment {
-
-    private Toolbar toolbar;
 
     private FragmentGameBinding binding;
 
@@ -167,7 +164,7 @@ public class GameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Score: ");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Score: " + score);
 
 
         lives = 3;
@@ -188,6 +185,7 @@ public class GameFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.app_name);
         binding = null;
     }
 }
