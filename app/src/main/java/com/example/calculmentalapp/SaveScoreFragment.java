@@ -21,6 +21,11 @@ public class SaveScoreFragment extends Fragment {
 
     }
 
+    public void onViewCreated(android.view.View view, android.os.Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.textScore.setText(String.valueOf(ScoreManager.getScore()));
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

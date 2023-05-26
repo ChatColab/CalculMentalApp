@@ -85,6 +85,8 @@ public class GameFragment extends Fragment {
         builder.setPositiveButton(R.string.save_score, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                ScoreManager.setScore(score);
+                score = 0;
                 NavHostFragment.findNavController(GameFragment.this)
                         .navigate(R.id.action_GameFragment_to_SaveScoreFragment);
             }
