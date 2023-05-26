@@ -15,4 +15,9 @@
         <item>Français</item>
         <item>English</item>
     </string-array>
+
+    <string name="save_score">Enregistrer</string>
+    <string name="retry">Rejouer</string>
+
+    <string name="lives">Vies : </string>
 </resources>

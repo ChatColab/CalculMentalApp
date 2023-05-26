@@ -1,5 +1,7 @@
 package com.example.calculmentalapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +14,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.calculmentalapp.databinding.FragmentGameBinding;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class GameFragment extends Fragment {
@@ -33,8 +37,8 @@ public class GameFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private Integer doOperation() {
-        Integer result;
+    private int doOperation() {
+        int result;
         switch (typeOperation) {
             case ADD:
                 result = firstNumber + secondNumber;
@@ -66,11 +70,39 @@ public class GameFragment extends Fragment {
         binding.tvLives.setText(String.valueOf(lives));
     }
 
+    private void restartGame() {
+        lives = 3;
+        score = 0;
+        modifyLifeTextView();
+        loadNewQuestion();
+    }
+
+    private void showGameOverScreen() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Game Over");
+        builder.setMessage("Your final score: " + score);
+        builder.setPositiveButton(R.string.save_score, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Restart the game or navigate to the initial screen
+            }
+        });
+        builder.setNegativeButton(R.string.retry, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                restartGame();
+            }
+        });
+        builder.setCancelable(false); // Disable canceling the dialog by pressing outside of it
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     private void handleWrongAnswer() {
         lives--;
         modifyLifeTextView();
         if (lives == 0) {
-            //game over
+            showGameOverScreen();
         } else {
             loadNewQuestion();
         }
@@ -82,7 +114,12 @@ public class GameFragment extends Fragment {
     }
 
     private void generateNewCalcul() {
-        Random random = new Random();
+        Random random = null;
+        try {
+            random = SecureRandom.getInstanceStrong();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
         int plage = 100;
 
         firstNumber = random.nextInt(plage);
@@ -122,12 +159,16 @@ public class GameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        lives = 3;
+        modifyLifeTextView();
         loadNewQuestion();
 
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                handleAnswer();
+                if (!binding.etAnswer.getText().toString().isEmpty() && lives > 0 && binding.etAnswer.getText().toString().length() < 10) {
+                    handleAnswer();
+                }
             }
         });
 
