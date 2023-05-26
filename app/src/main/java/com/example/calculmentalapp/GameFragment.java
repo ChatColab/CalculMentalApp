@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.calculmentalapp.databinding.FragmentGameBinding;
 
@@ -84,7 +85,8 @@ public class GameFragment extends Fragment {
         builder.setPositiveButton(R.string.save_score, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Restart the game or navigate to the initial screen
+                NavHostFragment.findNavController(GameFragment.this)
+                        .navigate(R.id.action_GameFragment_to_SaveScoreFragment);
             }
         });
         builder.setNegativeButton(R.string.retry, new DialogInterface.OnClickListener() {

@@ -4,6 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="home_fragment_label">Home Fragment</string>
     <string name="game_fragment_label">Game Fragment</string>
+    <string name="save_score_fragment_label">Save Score Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
