@@ -43,16 +43,16 @@
             android:inputType="numberSigned"
             android:hint="Réponse" />
 
-    <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:columnCount="3"
-            android:rowCount="4">
+<!--    <GridLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:columnCount="3"-->
+<!--            android:rowCount="4">-->
 
-        <!-- Ajoutez ici les boutons pour les chiffres de 0 à 9 et le bouton "Supprimer" -->
+<!--        &lt;!&ndash; Ajoutez ici les boutons pour les chiffres de 0 à 9 et le bouton "Supprimer" &ndash;&gt;-->
 
-    </GridLayout>
+<!--    </GridLayout>-->
 
     <Button
             android:id="@+id/btn_submit"

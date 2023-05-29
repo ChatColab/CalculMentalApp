@@ -7,8 +7,12 @@
     <string name="game_fragment_label">Game Fragment</string>
     <string name="save_score_fragment_label">Save Score Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="next">Suivant</string>
+    <string name="previous">Précédent</string>
+
+    <string name="play_button">Jouer</string>
+    <string name="highscore_button">Meilleurs scores</string>
+    <string name="exit_button">Quitter</string>
 
     <string name="enable_music">Activer la musique</string>
     <string name="enable_night_mode">Activer le mode nuit</string>

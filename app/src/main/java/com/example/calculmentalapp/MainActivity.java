@@ -1,5 +1,8 @@
 package com.example.calculmentalapp;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -21,18 +24,25 @@ import com.example.calculmentalapp.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+    private boolean isLanguageChanged = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLocale();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -113,9 +123,62 @@ public class MainActivity extends AppCompatActivity {
 
         // CHANGE LANGUAGE
         Spinner switchLanguage = popupView.findViewById(R.id.spinner_language);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        switchLanguage.setAdapter(adapter);
+        switchLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedLang = parent.getItemAtPosition(position).toString();
+                switch (selectedLang) {
+                    case "Français":
+                        setLocale("fr");
+                        break;
+                    case "English":
+                        setLocale("en");
+                        break;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
 
         // Affichez le PopupWindow sous la barre d'outils
         popupWindow.showAtLocation(findViewById(R.id.toolbar), Gravity.TOP | Gravity.START, 0, (getSupportActionBar().getHeight()) + 100);
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                if (isLanguageChanged) {
+                    recreate();
+                    isLanguageChanged = false;
+                }
+            }
+        });
+
+    }
+
+    public void setLocale(String lang) {
+        String currentLang = getSharedPreferences("Settings", MODE_PRIVATE).getString("My_Lang", "");
+        if (!currentLang.equals(lang)) {
+            isLanguageChanged = true;
+            Locale locale = new Locale(lang);
+            Locale.setDefault(locale);
+            Configuration config = new Configuration();
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+            // Save data to shared preferences
+            SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+            editor.putString("My_Lang", lang);
+            editor.apply();
+        }
+    }
+
+    public void loadLocale() {
+        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocale(language);
     }
 
     @Override
