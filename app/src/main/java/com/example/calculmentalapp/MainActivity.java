@@ -63,12 +63,29 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
+        if (id == R.id.action_about) {
+            showAboutPopup();
+            return true;
+        }
+
         if (id == R.id.action_settings) {
             showSettingsPopup();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showAboutPopup(){
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.popup_about, null);
+
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true;
+        PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        popupWindow.showAtLocation(findViewById(R.id.toolbar), Gravity.TOP | Gravity.START, 0, (getSupportActionBar().getHeight()) + 100);
     }
 
     private void showSettingsPopup() {

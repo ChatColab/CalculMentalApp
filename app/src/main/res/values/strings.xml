@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Calcul Mentalo !</string>
     <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
     <!-- Strings used for fragments for navigation -->
     <string name="home_fragment_label">Home Fragment</string>
     <string name="game_fragment_label">Game Fragment</string>
@@ -21,4 +22,8 @@
     <string name="retry">Retry</string>
 
     <string name="lives">Lives : </string>
+
+    <string name="credits">App by Florian Escande</string>
+    <string name="features_title">Features :</string>
+    <string name="features">Lorem Ipsum sheeesh</string>
 </resources>
