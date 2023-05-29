@@ -39,8 +39,8 @@ public class GameFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void modifyScoreDisplay(int score) {
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.score_display + score);
+    private void modifyScoreDisplay(int newScore) {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.score_display) + newScore);
     }
 
     private int doOperation() {
@@ -169,6 +169,7 @@ public class GameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        score=0;
         modifyScoreDisplay(score);
 
         lives = 3;
