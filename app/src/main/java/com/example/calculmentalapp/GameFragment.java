@@ -39,6 +39,10 @@ public class GameFragment extends Fragment {
         return binding.getRoot();
     }
 
+    private void modifyScoreDisplay(int score) {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.score_display + score);
+    }
+
     private int doOperation() {
         int result;
         switch (typeOperation) {
@@ -115,6 +119,7 @@ public class GameFragment extends Fragment {
 
     private void handleCorrectAnswer() {
         score++;
+        modifyScoreDisplay(score);
         loadNewQuestion();
     }
 
@@ -164,8 +169,7 @@ public class GameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Score: " + score);
-
+        modifyScoreDisplay(score);
 
         lives = 3;
         modifyLifeTextView();

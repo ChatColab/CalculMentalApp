@@ -20,7 +20,7 @@
 
     <string name="save_score">Enregistrer</string>
     <string name="retry">Rejouer</string>
-
+    <string name="score_display">Score : </string>
     <string name="lives">Vies : </string>
 
     <string name="credits">Application réalisée par Florian Escande</string>

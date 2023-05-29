@@ -20,7 +20,7 @@
 
     <string name="save_score">Save</string>
     <string name="retry">Retry</string>
-
+    <string name="score_display">Score : </string>
     <string name="lives">Lives : </string>
 
     <string name="credits">App by Florian Escande</string>
