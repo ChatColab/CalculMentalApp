@@ -17,6 +17,9 @@
         <action
                 android:id="@+id/action_HomeFragment_to_GameFragment"
                 app:destination="@id/GameFragment" />
+        <action
+                android:id="@+id/action_HomeFragment_to_HighscoreFragment"
+                app:destination="@id/HighscoreFragment" />
     </fragment>
     <fragment
             android:id="@+id/GameFragment"
@@ -28,11 +31,15 @@
                 app:destination="@id/SaveScoreFragment" />
     </fragment>
     <fragment
+            android:id="@+id/HighscoreFragment"
+            android:name="com.example.calculmentalapp.HighscoreFragment"
+            android:label="@string/highscore_fragment_label"
+            tools:layout="@layout/fragment_highscore" />
+    <fragment
             android:id="@+id/SaveScoreFragment"
             android:name="com.example.calculmentalapp.SaveScoreFragment"
             android:label="@string/save_score_fragment_label"
-            tools:layout="@layout/fragment_save_score">
-    </fragment>
+            tools:layout="@layout/fragment_save_score" />
     <fragment
             android:id="@+id/SecondFragment"
             android:name="com.example.calculmentalapp.SecondFragment"
@@ -43,4 +50,5 @@
                 android:id="@+id/action_SecondFragment_to_HomeFragment"
                 app:destination="@id/HomeFragment" />
     </fragment>
+
 </navigation>

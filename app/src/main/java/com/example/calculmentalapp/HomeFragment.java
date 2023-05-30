@@ -46,6 +46,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        binding.buttonHighscore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(HomeFragment.this)
+                        .navigate(R.id.action_HomeFragment_to_HighscoreFragment);
+            }
+        });
+
         binding.buttonExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

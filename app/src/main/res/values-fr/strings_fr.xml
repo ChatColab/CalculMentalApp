@@ -6,6 +6,7 @@
     <string name="home_fragment_label">Home Fragment</string>
     <string name="game_fragment_label">Game Fragment</string>
     <string name="save_score_fragment_label">Save Score Fragment</string>
+    <string name="highscore_fragment_label">Highscore Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Suivant</string>
     <string name="previous">Précédent</string>
