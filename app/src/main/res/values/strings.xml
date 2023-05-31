@@ -31,4 +31,8 @@
     <string name="credits">App by Florian Escande</string>
     <string name="features_title">Features :</string>
     <string name="features">Lorem Ipsum sheeesh</string>
+
+    <string name="save_score_score">Score : </string>
+    <string name="username_input">Enter your username</string>
+    <string name="button_save_score">Save score</string>
 </resources>
