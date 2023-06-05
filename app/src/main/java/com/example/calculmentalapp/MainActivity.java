@@ -3,12 +3,14 @@ package com.example.calculmentalapp;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +36,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    MediaPlayer mediaPlayer;
+
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -43,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale();
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.carte_aux_adieux);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Settings", MODE_PRIVATE);
+        boolean isMusicEnabled = sharedPreferences.getBoolean("MusicEnabled", true);
+        if (isMusicEnabled) {
+            mediaPlayer.start();
+        }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -108,6 +120,22 @@ public class MainActivity extends AppCompatActivity {
         PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
         // MUSIC
+        SharedPreferences sharedPreferences = getSharedPreferences("Settings", MODE_PRIVATE);
+        boolean isMusicEnabled = sharedPreferences.getBoolean("MusicEnabled", true); // get saved state, default is true
+        SwitchCompat switchMusic = popupView.findViewById(R.id.switch_music);
+        switchMusic.setChecked(isMusicEnabled); // set the switch state as per saved preference
+        switchMusic.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+            editor.putBoolean("MusicEnabled", isChecked); // save the state
+            editor.apply();
+            if (isChecked) {
+                mediaPlayer.start(); // start music
+            } else {
+                mediaPlayer.pause(); // pause music
+            }
+        });
+
+
 
         // NIGHT MODE
         SwitchCompat switchNightMode = popupView.findViewById(R.id.switch_night_mode);
@@ -154,6 +182,13 @@ public class MainActivity extends AppCompatActivity {
                     recreate();
                     isLanguageChanged = false;
                 }
+                SharedPreferences sharedPreferences = getSharedPreferences("Settings", MODE_PRIVATE);
+                boolean isMusicEnabled = sharedPreferences.getBoolean("MusicEnabled", true);
+                if (isMusicEnabled) {
+                    mediaPlayer.start();
+                } else {
+                    mediaPlayer.pause();
+                }
             }
         });
 
@@ -185,5 +220,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mediaPlayer != null){
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }

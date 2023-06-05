@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="24sp"
-            android:text="3 x 3" />
+            android:text="" />
 
     <LinearLayout
             android:orientation="vertical"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textSize="18sp"
-                android:text="etsteurys" />
+                android:text="" />
     </LinearLayout>
 
     <EditText
@@ -42,17 +42,6 @@
             android:layout_gravity="center_horizontal"
             android:inputType="numberSigned"
             android:hint="Réponse" />
-
-<!--    <GridLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:columnCount="3"-->
-<!--            android:rowCount="4">-->
-
-<!--        &lt;!&ndash; Ajoutez ici les boutons pour les chiffres de 0 à 9 et le bouton "Supprimer" &ndash;&gt;-->
-
-<!--    </GridLayout>-->
 
     <Button
             android:id="@+id/btn_submit"
