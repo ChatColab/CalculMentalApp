@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         loadLocale();
 
         mediaPlayer = MediaPlayer.create(this, R.raw.carte_aux_adieux);
+        mediaPlayer.setLooping(true);
 
         SharedPreferences sharedPreferences = getSharedPreferences("Settings", MODE_PRIVATE);
         boolean isMusicEnabled = sharedPreferences.getBoolean("MusicEnabled", true);
@@ -121,21 +122,19 @@ public class MainActivity extends AppCompatActivity {
 
         // MUSIC
         SharedPreferences sharedPreferences = getSharedPreferences("Settings", MODE_PRIVATE);
-        boolean isMusicEnabled = sharedPreferences.getBoolean("MusicEnabled", true); // get saved state, default is true
+        boolean isMusicEnabled = sharedPreferences.getBoolean("MusicEnabled", true);
         SwitchCompat switchMusic = popupView.findViewById(R.id.switch_music);
-        switchMusic.setChecked(isMusicEnabled); // set the switch state as per saved preference
+        switchMusic.setChecked(isMusicEnabled);
         switchMusic.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-            editor.putBoolean("MusicEnabled", isChecked); // save the state
+            editor.putBoolean("MusicEnabled", isChecked);
             editor.apply();
             if (isChecked) {
-                mediaPlayer.start(); // start music
+                mediaPlayer.start();
             } else {
-                mediaPlayer.pause(); // pause music
+                mediaPlayer.pause();
             }
         });
-
-
 
         // NIGHT MODE
         SwitchCompat switchNightMode = popupView.findViewById(R.id.switch_night_mode);
@@ -173,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Affichez le PopupWindow sous la barre d'outils
+        // Afficher le PopupWindow sous la barre d'outils
         popupWindow.showAtLocation(findViewById(R.id.toolbar), Gravity.TOP | Gravity.START, 0, (getSupportActionBar().getHeight()) + 100);
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
