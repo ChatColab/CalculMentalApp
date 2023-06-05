@@ -12,9 +12,6 @@
             tools:layout="@layout/fragment_home">
 
         <action
-                android:id="@+id/action_HomeFragment_to_SecondFragment"
-                app:destination="@id/SecondFragment" />
-        <action
                 android:id="@+id/action_HomeFragment_to_GameFragment"
                 app:destination="@id/GameFragment" />
         <action
@@ -40,15 +37,6 @@
             android:name="com.example.calculmentalapp.SaveScoreFragment"
             android:label="@string/save_score_fragment_label"
             tools:layout="@layout/fragment_save_score" />
-    <fragment
-            android:id="@+id/SecondFragment"
-            android:name="com.example.calculmentalapp.SecondFragment"
-            android:label="@string/second_fragment_label"
-            tools:layout="@layout/fragment_second">
 
-        <action
-                android:id="@+id/action_SecondFragment_to_HomeFragment"
-                app:destination="@id/HomeFragment" />
-    </fragment>
 
 </navigation>
