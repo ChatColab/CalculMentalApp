@@ -41,14 +41,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:inputType="numberSigned"
-            android:hint="Réponse" />
+            android:hint="@string/answer" />
 
     <Button
             android:id="@+id/btn_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Confirmer" />
+            android:text="@string/confirm" />
 
     <TextView
             android:id="@+id/gadamn"
