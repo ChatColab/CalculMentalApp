@@ -10,6 +10,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.calculmentalapp.HighscoreAdapter;
 import com.example.calculmentalapp.db.database.ScoreBaseHelper;
@@ -34,8 +35,7 @@ public class HighscoreFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // Assurez-vous d'initialiser votre ScoreDao ici
-        // scoreDao = ...
+
         Context context = requireContext();
         scoreDao = new ScoreDao(new ScoreBaseHelper(context,"BDD",1));
 

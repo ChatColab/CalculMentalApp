@@ -36,7 +36,7 @@
 
     <string name="credits">Application réalisée par Florian Escande</string>
     <string name="features_title">Fonctionnalités :</string>
-    <string name="features">Musique de fond, thème sombre, options de langue (peut nécessiter de le faire deux fois de suite + ne pas essayer de changer la langue en dehors de l\'écran d'accueil)</string>
+    <string name="features">Musique de fond, thème sombre, options de langue (peut nécessiter de le faire deux fois de suite + ne pas essayer de changer la langue en dehors de l\'écran d\'accueil)</string>
 
     <string name="save_score_score">Score : </string>
     <string name="username_input">Entrez votre pseudo</string>
