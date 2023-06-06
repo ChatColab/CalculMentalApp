@@ -5,12 +5,8 @@
         android:padding="16dp"
         tools:context=".HighscoreFragment">
 
-    <TextView
-            android:id="@+id/text_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="Score: "
-            android:textSize="20sp" />
+    <ListView
+            android:id="@+id/list_high_scores"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 </RelativeLayout>

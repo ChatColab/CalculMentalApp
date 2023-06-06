@@ -90,4 +90,28 @@ public abstract class BaseDao<T extends BaseEntity> {
 
         return count;
     }
+
+    protected List<T> getTopEntities(String sortOrder, int limit) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                getTableName(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                sortOrder,
+                String.valueOf(limit)
+        );
+
+        List items = new ArrayList<T>();
+        while(cursor.moveToNext()) {
+            items.add(getEntity(cursor));
+        }
+        cursor.close();
+
+        return items;
+    }
+
 }

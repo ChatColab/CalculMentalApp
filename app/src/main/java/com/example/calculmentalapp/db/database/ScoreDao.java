@@ -2,8 +2,12 @@ package com.example.calculmentalapp.db.database;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.example.calculmentalapp.db.entities.Score;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ScoreDao extends BaseDao<Score>{
 
@@ -38,4 +42,10 @@ public class ScoreDao extends BaseDao<Score>{
 
         return score;
     }
+
+    public List<Score> getTopScores(int limit) {
+        String sortOrder = score + " DESC";
+        return getTopEntities(sortOrder, limit);
+    }
+
 }

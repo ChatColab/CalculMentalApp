@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.calculmentalapp.databinding.FragmentSaveScoreBinding;
+import com.example.calculmentalapp.db.database.ScoreBaseHelper;
 import com.example.calculmentalapp.db.database.ScoreDao;
 import com.example.calculmentalapp.db.entities.Score;
 
@@ -27,6 +28,9 @@ public class SaveScoreFragment extends Fragment {
     }
 
     public void onViewCreated(android.view.View view, android.os.Bundle savedInstanceState) {
+
+        scoreDao = new ScoreDao(new ScoreBaseHelper(getContext(),"BDD",1));
+
         int currentScore = ScoreManager.getScore();
         super.onViewCreated(view, savedInstanceState);
         binding.textScore.setText(String.valueOf(currentScore));
