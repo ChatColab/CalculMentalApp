@@ -12,8 +12,7 @@ public class ScoreBaseHelper extends DataBaseHelper {
         return "CREATE TABLE IF NOT EXISTS " + ScoreDao.tableName + " (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 ScoreDao.userName + " TEXT," +
-                ScoreDao.score + " INTEGER," +
-                ScoreDao.lives + " INTEGER" +
+                ScoreDao.score + " INTEGER" +
                 ")";
     }
 

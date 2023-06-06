@@ -40,5 +40,6 @@
 
     <string name="save_score_score">Score : </string>
     <string name="username_input">Entrez votre pseudo</string>
+    <string name="username_error">Veuillez entrer un pseudo</string>
     <string name="button_save_score">Enregistrer le score</string>
 </resources>

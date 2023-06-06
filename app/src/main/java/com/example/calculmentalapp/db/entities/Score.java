@@ -3,7 +3,6 @@ package com.example.calculmentalapp.db.entities;
 public class Score extends BaseEntity{
     String userName;
     Integer score;
-    Integer lives;
 
     public Score() {
     }
@@ -22,13 +21,5 @@ public class Score extends BaseEntity{
 
     public void setScore(Integer score) {
         this.score = score;
-    }
-
-    public Integer getLives() {
-        return lives;
-    }
-
-    public void setLives(Integer lives) {
-        this.lives = lives;
     }
 }

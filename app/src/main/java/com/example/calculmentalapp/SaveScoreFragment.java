@@ -1,14 +1,19 @@
 package com.example.calculmentalapp;
 
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.calculmentalapp.databinding.FragmentSaveScoreBinding;
+import com.example.calculmentalapp.db.database.ScoreDao;
+import com.example.calculmentalapp.db.entities.Score;
 
 public class SaveScoreFragment extends Fragment {
 
     FragmentSaveScoreBinding binding;
+
+    private ScoreDao scoreDao;
 
     @Override
     public View onCreateView(
@@ -22,8 +27,24 @@ public class SaveScoreFragment extends Fragment {
     }
 
     public void onViewCreated(android.view.View view, android.os.Bundle savedInstanceState) {
+        int currentScore = ScoreManager.getScore();
         super.onViewCreated(view, savedInstanceState);
-        binding.textScore.setText(String.valueOf(ScoreManager.getScore()));
+        binding.textScore.setText(String.valueOf(currentScore));
+
+        binding.btnSaveScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = binding.editName.getText().toString();
+                if (username.isEmpty()) {
+                    Toast.makeText(getActivity(), R.string.username_error, Toast.LENGTH_SHORT).show();
+                } else {
+                    Score score = new Score();
+                    score.setScore(currentScore);
+                    score.setUserName(username);
+                    scoreDao.create(score);
+                }
+            }
+        });
     }
 
     @Override
