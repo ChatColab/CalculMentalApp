@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.calculmentalapp.databinding.FragmentSaveScoreBinding;
 import com.example.calculmentalapp.db.database.ScoreBaseHelper;
@@ -46,6 +47,9 @@ public class SaveScoreFragment extends Fragment {
                     score.setScore(currentScore);
                     score.setUserName(username);
                     scoreDao.create(score);
+
+                    NavHostFragment.findNavController(SaveScoreFragment.this)
+                            .navigate(R.id.action_SaveScoreFragment_to_HighscoreFragment);
                 }
             }
         });

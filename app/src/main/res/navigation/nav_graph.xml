@@ -36,7 +36,12 @@
             android:id="@+id/SaveScoreFragment"
             android:name="com.example.calculmentalapp.SaveScoreFragment"
             android:label="@string/save_score_fragment_label"
-            tools:layout="@layout/fragment_save_score" />
+            tools:layout="@layout/fragment_save_score">
+
+        <action
+                android:id="@+id/action_SaveScoreFragment_to_HighscoreFragment"
+                app:destination="@id/HighscoreFragment" />
+    </fragment>
 
 
 </navigation>
