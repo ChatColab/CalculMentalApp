@@ -5,49 +5,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
         tools:context=".GameFragment">
 
     <TextView
             android:id="@+id/tv_operation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:textSize="24sp"
             android:text="" />
 
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="111dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
 
         <TextView
-                android:text="@string/lives"
-                android:layout_width="90dp"
+                android:id="@+id/tv_lives_const"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_lives_const" />
+                android:text="@string/lives" />
 
         <TextView
                 android:id="@+id/tv_lives"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:textSize="18sp"
-                android:text="" />
+                android:text=""
+                android:layout_marginStart="8dp" />
     </LinearLayout>
 
     <EditText
             android:id="@+id/et_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:inputType="numberSigned"
-            android:hint="@string/answer" />
+            android:hint="@string/answer"
+            android:layout_marginTop="16dp" />
 
     <Button
             android:id="@+id/btn_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/confirm" />
+            android:text="@string/confirm"
+            android:layout_marginTop="16dp" />
 
 </LinearLayout>

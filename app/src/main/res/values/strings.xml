@@ -36,7 +36,7 @@
 
     <string name="credits">App by Florian Escande</string>
     <string name="features_title">Features :</string>
-    <string name="features">Background music, dark theme, language options</string>
+    <string name="features">Background music, dark theme, language options (may require to do it twice in a row + don\'t try to change language outside of Home screen)</string>
 
     <string name="save_score_score">Score : </string>
     <string name="username_input">Enter your username</string>

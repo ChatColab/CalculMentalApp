@@ -86,7 +86,8 @@ public class GameFragment extends Fragment {
     private void showGameOverScreen() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle(R.string.game_over);
-        builder.setMessage(R.string.final_score + score);
+        builder.setMessage(getString(R.string.final_score) + score);
+
         builder.setPositiveButton(R.string.save_score, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
